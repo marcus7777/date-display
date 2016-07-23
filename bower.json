@@ -1,0 +1,14 @@
+{
+  "name": "date-display",
+  "version": "1.0.0",
+  "description": "display date",
+  "main": "date-display.html",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "dependencies": {
+    "polymer": "*",
+    "moment-js": "marcus7777/moment-js#d1f0b8c756"
+  }
+}

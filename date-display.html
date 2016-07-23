@@ -1,0 +1,33 @@
+<link rel="import" href="../moment-js/moment-js.html">
+<link rel="import" href="../polymer/polymer.html">
+<!--
+  `<date-display></date-display>` display date
+  @demo demo.html
+-->
+<dom-module id="date-display">
+  <template>
+    {{date}}
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "date-display",
+    properties:{
+      format:{
+        type:String,
+        value:"LL",
+      },
+      date:{
+        computed:"getDate(format,locale)",
+      },
+      locale:{
+        type:String,
+        value:"en-gb",
+      },
+    },
+    getDate: function(format,locale){
+        var d = moment().locale(locale)
+        return d.format(format)
+    },
+  })
+</script>

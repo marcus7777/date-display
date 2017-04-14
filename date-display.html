@@ -24,10 +24,19 @@
         type:String,
         value:"en-gb",
       },
+      value: {
+        type:Number,
+        value: 0,
+      }
     },
-    getDate: function(format,locale){
+    getDate: function(format,locale,value){
+      if (value) {
+        var d = moment(value).locale(locale)
+        return d.format(format)
+      } else {
         var d = moment().locale(locale)
         return d.format(format)
+      }
     },
   })
 </script>

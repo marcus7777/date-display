@@ -38,12 +38,12 @@
         } else if (value < (60 * 1000)) {
           var minute = a.diff(b, "minutes")
           var second = a.diff(b.add(minute, "minutes"), "seconds")
-          return  minute + ":" + second
+          return  minute + ":" + this.pad(second)
         } else if (value < (24 * 60 * 60 * 1000)) {
           var hour   = a.diff(b, "hours")
           var minute = a.diff(b.add(hour, "hours"), "minutes")
           var second = a.diff(b.add(hour, "hours").add(minute, "minutes"), "seconds")
-          return hour + ":" + minute + ":" + second
+          return hour + ":" + this.pad(minute) + ":" + this.pad(second)
         } else {
           var c = moment(value).locale(locale)
           return c.format(format)
@@ -52,6 +52,14 @@
         var d = moment().locale(locale)
         return d.format(format)
       }
+    },
+    pad: function(n, width, z) {
+      z = z || '0'
+      if (width == undefined) {
+        width = 2
+      }
+      n = n + ''
+      return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n
     },
   })
 </script>

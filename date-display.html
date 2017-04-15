@@ -25,12 +25,14 @@
         value:"en-gb",
       },
       value: {
-        type:Number,
         value: 0,
       }
     },
     getDate: function(format,locale,value){
       if (value) {
+        if (value.StartsWith("P")) {
+          return value.replace("P","").replace("T","").toLowerCase()
+        }
         var a = moment(value).locale(locale)
         var b = moment(0)
         if (value < (60 * 1000)) {

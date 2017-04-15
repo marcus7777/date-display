@@ -34,7 +34,7 @@
         var a = moment(value).locale(locale)
         var b = moment(0)
         if (value < (60 * 1000)) {
-          return (Math.round(10 * a.diff(b, "seconds", true)) / 10) + " seconds"
+          return (Math.round(10 * a.diff(b, "seconds", true)) / 10) + "s"
         } else if (value < (60 * 1000)) {
           var minute = a.diff(b, "minutes")
           var second = a.diff(b.add(minute, "minutes"), "seconds")

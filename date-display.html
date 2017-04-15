@@ -38,7 +38,10 @@
         } else if (value < (60 * 60 * 1000)) {
           return (Math.round(10 * a.diff(b, "minutes", true)) / 10) + " minutes"
         } else if (value < (24 * 3.6e+6)) {
-          return a.diff(b, "hours")  + ":" + a.diff(b.add(a.diff(b, "hours"), "hours"), "minutes")
+          var hour = a.diff(b, "hours")
+          var minute = a.diff(b.add(hour, "hours"), "minutes")
+          var second = a.diff(b.add(hour, "hours").add(minute, "minutes"), "seconds")
+          return hour + ":" + minute + ":" + second
         } else {
           var c = moment(value).locale(locale)
           return c.format(format)

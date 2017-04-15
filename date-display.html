@@ -31,7 +31,7 @@
     getDate: function(format,locale,value){
       if (value) {
         if (typeof value == "string" ) {
-          if (value.StartsWith("P")) {
+          if (value.startsWith("P")) {
             return value.replace("P","").replace("T","").toLowerCase()
           }
         }

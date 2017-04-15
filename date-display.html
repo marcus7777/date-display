@@ -30,7 +30,7 @@
     },
     getDate: function(format,locale,value){
       if (value) {
-        if (value.StartsWith("P")) {
+        if (typeof value == "string" && value.StartsWith("P")) {
           return value.replace("P","").replace("T","").toLowerCase()
         }
         var a = moment(value).locale(locale)

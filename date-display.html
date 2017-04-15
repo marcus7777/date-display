@@ -35,7 +35,7 @@
         if (value < (24 * 3.6e+6)) {
           var a = moment(value).locale(locale)
           var b = moment(0)
-          return a.diff(b)
+          return a.diff(b).format(format)
         } else {
           var c = moment(value).locale(locale)
           return c.format(format)

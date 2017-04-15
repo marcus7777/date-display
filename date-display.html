@@ -25,13 +25,15 @@
         value:"en-gb",
       },
       value: {
-        value: 0,
+        value: "",
       }
     },
     getDate: function(format,locale,value){
       if (value) {
-        if (typeof value == "string" && value.StartsWith("P")) {
-          return value.replace("P","").replace("T","").toLowerCase()
+        if (typeof value == "string" ) {
+          if (value.StartsWith("P")) {
+            return value.replace("P","").replace("T","").toLowerCase()
+          }
         }
         var a = moment(value).locale(locale)
         var b = moment(0)

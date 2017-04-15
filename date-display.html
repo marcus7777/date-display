@@ -35,10 +35,12 @@
         var b = moment(0)
         if (value < (60 * 1000)) {
           return (Math.round(10 * a.diff(b, "seconds", true)) / 10) + " seconds"
-        } else if (value < (60 * 60 * 1000)) {
-          return (Math.round(10 * a.diff(b, "minutes", true)) / 10) + " minutes"
-        } else if (value < (24 * 3.6e+6)) {
-          var hour = a.diff(b, "hours")
+        } else if (value < (60 * 1000)) {
+          var minute = a.diff(b, "minutes")
+          var second = a.diff(b.add(minute, "minutes"), "seconds")
+          return  minute + ":" + second
+        } else if (value < (24 * 60 * 60 * 1000)) {
+          var hour   = a.diff(b, "hours")
           var minute = a.diff(b.add(hour, "hours"), "minutes")
           var second = a.diff(b.add(hour, "hours").add(minute, "minutes"), "seconds")
           return hour + ":" + minute + ":" + second

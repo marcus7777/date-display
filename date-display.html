@@ -34,11 +34,11 @@
         var a = moment(value).locale(locale)
         var b = moment(0)
         if (value < (60 * 1000)) {
-          return a.diff(b, "seconds", true) + " seconds"
+          return (Math.round(10 * a.diff(b, "seconds", true)) / 10) + " seconds"
         } else if (value < (60 * 60 * 1000)) {
-          return a.diff(b, "minutes", true) + " minutes"
+          return (Math.round(10 * a.diff(b, "minutes", true)) / 10) + " minutes"
         } else if (value < (24 * 3.6e+6)) {
-          return a.diff(b, "hours", true) + " hours"
+          return a.diff(b, "hours")  + ":" + a.diff(b.add(a.diff(b, "hours"), "hours"), "minutes")
         } else {
           var c = moment(value).locale(locale)
           return c.format(format)

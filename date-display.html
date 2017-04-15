@@ -32,13 +32,13 @@
     getDate: function(format,locale,value){
       debugger
       if (value) {
-        if (value < (3.6e+6)) {
-          var a = moment(value).locale(locale)
-          var b = moment(0)
+        var a = moment(value).locale(locale)
+        var b = moment(0)
+        if (value < (60 * 1000)) {
+          return a.diff(b, "seconds")
+        } else if (value < (60 * 60 * 1000)) {
           return a.diff(b, "minutes")
         } else if (value < (24 * 3.6e+6)) {
-          var a = moment(value).locale(locale)
-          var b = moment(0)
           return a.diff(b, "hours")
         } else {
           var c = moment(value).locale(locale)

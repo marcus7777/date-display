@@ -42,12 +42,12 @@
         } else if (value < (60 * 1000)) {
           var minute = a.diff(b, "minutes")
           var second = a.diff(b.add(minute, "minutes"), "seconds")
-          return  minute + ":" + this.pad(second)
+          return  minute + "m" + this.pad(second) + "s"
         } else if (value < (24 * 60 * 60 * 1000)) {
           var hour   = a.diff(b, "hours")
           var minute = a.diff(b.add(hour, "hours"), "minutes")
           var second = a.diff(b.add(minute, "minutes"), "seconds")
-          return hour + ":" + this.pad(minute) + ":" + this.pad(second)
+          return hour + "h" + this.pad(minute) + "m" + this.pad(second) + "s"
         } else {
           var c = moment(value).locale(locale)
           return c.format(format)

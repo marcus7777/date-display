@@ -50,7 +50,7 @@
           if (hour) {
             output +=  hour + "h"
           }
-          if (minute) {
+          if (minute || hour) {
             output +=  this.pad(minute) + "m"
           }
           return output + this.pad(second) + "s"

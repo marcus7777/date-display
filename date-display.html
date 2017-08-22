@@ -40,12 +40,14 @@
         }
         var a = moment(value).locale(locale)
         var b = moment(0)
+        var second = (Math.round(this.round * a.diff(b, "seconds", true)) / this.round) + "s"
+        
         if (value < (60 * 1000)) {
-          return (this.round * a.diff(b, "seconds", true) / this.round) + "s"
+          return second
         } else if (value < (24 * 60 * 60 * 1000)) {
           var hour   = a.diff(b, "hours")
           var minute = a.diff(b.add(hour, "hours"), "minutes")
-          var second = (this.round * a.diff(b.add(minute, "minutes"), "seconds") / this.round)
+          
           var output = ""
           if (hour) {
             output +=  hour + "h"

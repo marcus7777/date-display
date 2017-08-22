@@ -41,7 +41,7 @@
         var a = moment(value).locale(locale)
         var b = moment(0)
         if (value < (60 * 1000)) {
-          return (Math.round(this.round * a.diff(b, "seconds", true)) / this.round) + "s"
+          return (this.round * a.diff(b, "seconds", true) / this.round) + "s"
         } else if (value < (24 * 60 * 60 * 1000)) {
           var hour   = a.diff(b, "hours")
           var minute = a.diff(b.add(hour, "hours"), "minutes")
@@ -50,10 +50,18 @@
           if (hour) {
             output +=  hour + "h"
           }
-          if (minute || hour) {
+          if (hour && minute) {
             output +=  this.pad(minute) + "m"
+          } else if (minute) {
+            output +=  minute + "m"
           }
-          return output + this.pad(second) + "s"
+          if (minute || hour) {
+            output +=  second + "s"
+          } else {
+            output +=  this.pad(second) + "s"
+          }
+          
+          return output
         } else {
           var c = moment(value).locale(locale)
           return c.format(format)

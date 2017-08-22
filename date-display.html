@@ -45,7 +45,7 @@
         } else if (value < (24 * 60 * 60 * 1000)) {
           var hour   = a.diff(b, "hours")
           var minute = a.diff(b.add(hour, "hours"), "minutes")
-          var second = a.diff(b.add(minute, "minutes"), "seconds")
+          var second = (this.round * a.diff(b.add(minute, "minutes"), "seconds") / this.round)
           var output = ""
           if (hour) {
             output +=  hour + "h"

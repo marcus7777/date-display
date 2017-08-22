@@ -41,7 +41,7 @@
         var a = moment(value).locale(locale)
         var b = moment(0)
         
-        if (Math.max(value, -value) > (60 * 1000)) {
+        if (Math.max(value, -value) < (60 * 1000)) {
           return (Math.round(this.round * a.diff(b, "seconds", true)) / this.round) + "s"
         } else if (value < (24 * 60 * 60 * 1000)) {
           var hour   = a.diff(b, "hours")

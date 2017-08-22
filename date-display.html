@@ -57,9 +57,9 @@
             output +=  minute + "m"
           }
           if (minute || hour) {
-            output +=  second + "s"
+            output += this.pad(second) + "s"
           } else {
-            output +=  this.pad(second) + "s"
+            output += second + "s"
           }
           
           return output

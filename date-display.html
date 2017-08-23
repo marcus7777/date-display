@@ -46,9 +46,7 @@
         }
         var a = moment(value).locale(locale)
         var b = moment(0)
-        if (!this.next) {
-          this.next = 2000
-        }
+        
         this.go = !this.go
         if (Math.max(value, -value) < (60 * 1000)) {
           return (Math.floor(this.round * a.diff(b, "seconds", true)) / this.round) + "s"

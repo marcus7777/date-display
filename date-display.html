@@ -30,8 +30,11 @@
       round: {
         value: 10,
       },
+      duration: {
+        value: false,
+      },
     },
-    getDate: function(format,locale,value){
+    getDate: function(format, locale, value, duration){
       if (value) {
         if (typeof value == "string" ) {
           if (value.startsWith("P")) {
@@ -43,7 +46,7 @@
        
         if (Math.max(value, -value) < (60 * 1000)) {
           return (Math.floor(this.round * a.diff(b, "seconds", true)) / this.round) + "s"
-        } else if (value < (24 * 60 * 60 * 1000)) {
+        } else if (value < (24 * 60 * 60 * 1000) || duration) {
           var hour   = a.diff(b, "hours")
           var minute = a.diff(b.add(hour, "hours"), "minutes")
           var second = a.diff(b.add(minute, "minutes"), "seconds")

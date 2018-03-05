@@ -8,7 +8,7 @@
     "web-components"
   ],
   "dependencies": {
-    "polymer": "1.9.3",
+    "polymer": "1.11.3",
     "moment-js": "marcus7777/moment-js"
   }
 }

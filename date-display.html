@@ -39,6 +39,9 @@
       },
     },
     getDate: function(format, locale, value, duration){
+      if (/([12]\d{3}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01]))/g.test(value)) {
+        console.log(value)
+      }
       if (value) {
         if (typeof value == "string" ) {
           if (value.startsWith("P")) {
@@ -75,7 +78,11 @@
           return moment(value).locale(locale).fromNow()
         } else {
           var c = moment(value).locale(locale)
-          return c.format(format)
+          if (this.dropYear) {
+            return (""+c.format(format)).replace(moment(value).format("YYYY"),"")
+          } else {
+            return c.format(format)
+          }
         }
       } else {
         var d = moment().locale(locale)

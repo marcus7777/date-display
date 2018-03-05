@@ -18,7 +18,7 @@
         value:"LL",
       },
       date:{
-        computed:"getDate(format,locale,value)",
+        computed:"getDate(format,locale,value,duration,dropYear)",
       },
       locale:{
         type:String,
@@ -38,7 +38,7 @@
         value: false,
       },
     },
-    getDate: function(format, locale, value, duration){
+    getDate: function(format, locale, value, duration, dropYear){
       if (/([12]\d{3}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01]))/g.test(value)) {
         console.log(value)
       }

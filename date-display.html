@@ -33,6 +33,9 @@
       duration: {
         value: false,
       },
+      dropYear: {
+        value: false,
+      },
     },
     getDate: function(format, locale, value, duration){
       if (value) {
@@ -75,7 +78,11 @@
         }
       } else {
         var d = moment().locale(locale)
-        return d.format(format)
+        if (this.dropYear) {
+          return (""+d.format(format)).replace(moment(value).format("YYYY"),"")
+        } else {
+          return d.format(format)
+        }
       }
     },
     pad: function(n, width, z) {

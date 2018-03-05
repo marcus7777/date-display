@@ -18,7 +18,7 @@
         value:"LL",
       },
       date:{
-        computed:"getDate(format,locale,value,duration,dropYear)",
+        computed:"getDate(format,locale,value,duration,dropYear,round)",
       },
       locale:{
         type:String,
@@ -38,7 +38,7 @@
         value: false,
       },
     },
-    getDate: function(format, locale, value, duration, dropYear){
+    getDate: function(format, locale, value, duration, dropYear, round){
       if (/([12]\d{3}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01]))/g.test(value)) {
         console.log(value)
       }
@@ -52,7 +52,7 @@
         var b = moment(0)
        
         if (Math.max(value, -value) < (60 * 1000)) {
-          return (Math.floor(this.round * a.diff(b, "seconds", true)) / this.round) + "s"
+          return (Math.floor(round * a.diff(b, "seconds", true)) / round) + "s"
         } else if (value < (24 * 60 * 60 * 1000)) {
           var hour   = a.diff(b, "hours")
           var minute = a.diff(b.add(hour, "hours"), "minutes")
@@ -78,7 +78,7 @@
           return moment(value).locale(locale).fromNow()
         } else {
           var c = moment(value).locale(locale)
-          if (this.dropYear) {
+          if (dropYear) {
             return (""+c.format(format)).replace(moment(value).format("YYYY"),"")
           } else {
             return c.format(format)
@@ -86,7 +86,7 @@
         }
       } else {
         var d = moment().locale(locale)
-        if (this.dropYear) {
+        if (dropYear) {
           return (""+d.format(format)).replace(moment(value).format("YYYY"),"")
         } else {
           return d.format(format)

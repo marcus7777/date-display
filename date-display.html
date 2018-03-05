@@ -39,7 +39,9 @@
       },
     },
     getDate: function(format, locale, value, duration, dropYear, round){
+      var formated
       if (/([12]\d{3}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01]))/g.test(value)) {
+        formated = "YYYY-MM-DD"
         console.log(value)
       }
       if (value) {
@@ -48,7 +50,7 @@
             return value.replace("P","").replace("T","").toLowerCase()
           }
         }
-        var a = moment(value).locale(locale)
+        var a = moment(value, formated).locale(locale)
         var b = moment(0)
        
         if (Math.max(value, -value) < (60 * 1000)) {
